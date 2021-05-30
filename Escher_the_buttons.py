@@ -8,30 +8,27 @@ def buttons(ceiling):
 
     l,w = len(ceiling), len(ceiling[0])
 
-    checked = np.zeros((l,w))
+    # checked = np.zeros((l,w))
 
     for i in range(l):
         for j in range(w):
-            if (not checked[i][j]) :
-                # now is checked
-                checked[i][j]=1
-                if ceiling[i][j]:
-                    val =ceiling[i][j]
-                    cc = [(i,j)]
-                    while cc:
-                        (ii,jj) = cc.pop()
-                        # print(ii,jj)
-                        for (di, dj) in direction:
+            if ceiling[i][j]:
+                val =ceiling[i][j]
+                ceiling[i][j] = 0
+                cc = [(i,j)]
+                while cc:
+                    (ii,jj) = cc.pop()
+                    # print(ii,jj)
+                    for (di, dj) in direction:
 
-                            cur_i, cur_j = ii+di,jj+dj
-                            if (-1<cur_i<l) and (-1<cur_j<w):
-                                if not checked[cur_i][cur_j]:
-                                    checked[cur_i][cur_j] =1
-                                    cur = ceiling[cur_i][cur_j]
-                                    if cur:
-                                        val+=cur
-                                        cc.append((cur_i,cur_j))
-                    result.append(val)
+                        cur_i, cur_j = ii+di,jj+dj
+                        if (-1<cur_i<l) and (-1<cur_j<w):
+                            cur = ceiling[cur_i][cur_j]
+                            if cur:
+                                val+=cur
+                                cc.append((cur_i,cur_j))
+                                ceiling[cur_i][cur_j]=0
+                result.append(val)
 
 
     return sorted(result)[::-1]
