@@ -2,6 +2,8 @@ def keys_and_locks(lock, some_key):
     # replace this for solution
     lock_list = [list(x) for x in lock.split("\n")]
     key_list = [list(x) for x in some_key.split("\n")]
+    print(lock, lock_list)
+
     for i in range(4):
         while key_list and '#' not in key_list[0]:
             key_list = key_list[1:]
