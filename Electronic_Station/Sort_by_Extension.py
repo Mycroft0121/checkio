@@ -2,9 +2,7 @@ from typing import List
 
 def sort_by_ext(files: List[str]) -> List[str]:
     # your code here
-    sub = sorted([x for x in files if x[0]=='.' and len(x.split("."))<=2])
-    rest = sorted([x for x in files if x not in sub], key = lambda x: x.split(".")[::-1] )
-    files = sub+rest
+    files = sorted([x for x in files ], key = lambda x: x.split(".") if x[0]=='.' and len(x.split("."))<=2 else x.split(".")[::-1])
     return files
 
 
