@@ -12,8 +12,8 @@ class Warrior:
     def is_alive(self):
         return self.health>0
 
-    def attack_enermy(self, enermy):
-        return enermy.take_attack(self.attack)
+    def attack_enemy(self, enemy):
+        return enemy.take_attack(self.attack)
 
     def take_attack(self,att):
         self.health -= att
@@ -42,7 +42,7 @@ class Vampire(Warrior):
         self.attack = 4
         self.vampirism = 50
 
-    def attack_enermy(self, enermy):
-        dmg = super(Vampire,self).attack_enermy(enermy)
+    def attack_enemy(self, enemy):
+        dmg = super(Vampire,self).attack_enemy(enemy)
         self.health+=dmg*self.vampirism/100
         return dmg
